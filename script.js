@@ -16,10 +16,13 @@ const getVal = (id) => {
 // Auto Calculate Expenses
 // Logic: Expenses for salary (40(1)) are 50% but not exceeding 100,000 THB
 document.getElementById('autoCalcExpenses').addEventListener('click', () => {
-    const salary = getVal('salary');
+    const salaryMonthly = getVal('salaryMonthly');
+    const bonus = getVal('bonus');
+    const totalSalary = (salaryMonthly * 12) + bonus;
+
     // Simplified assumption: Applying standard salary deduction rule
     // In reality, this depends heavily on income type, but this is a helper.
-    let expense = salary * 0.5;
+    let expense = totalSalary * 0.5;
     if (expense > 100000) expense = 100000;
 
     document.getElementById('expenses').value = expense;
@@ -52,9 +55,13 @@ document.getElementById('cardSpouse').addEventListener('click', function (e) {
 });
 
 // Calculate Main Function
+// Calculate Main Function
 document.getElementById('calculateBtn').addEventListener('click', () => {
     // 1. Get Inputs
-    const salary = getVal('salary');
+    const salaryMonthly = getVal('salaryMonthly');
+    const bonus = getVal('bonus');
+    const salary = (salaryMonthly * 12) + bonus;
+
     const otherIncome = getVal('otherIncome');
     const expenses = getVal('expenses');
 
